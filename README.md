@@ -1,63 +1,63 @@
+
 # HTTP_Control
 Borja HTTP_Control
 
 Bueno hace unos dias Recibi una llamada de un amigo con una idea de un proyecto
-Para sus Alumnos.%%%
+Para sus Alumnos.
 
-La Idea es controlar un Arduino por peticiones HTTP%%%
-__++Con 39Lineas (primera version)++__
+La Idea es controlar un Arduino por peticiones HTTP
+**Con 39Lineas (primera version)**
 
-Para luego integrarlo en algo MAS GRANDE%%%
+Para luego integrarlo en algo MAS GRANDE
 (esto ya es su parte y de momento no se puede contar.)
-%%%
-%%%
-%%%
 
-!!!!Manejo:%%%
-%%%
 
-!!!1) Conectarnos a la red wifi creada por el ESP8266%%%
+
+
+# Manejo:
+
+
+## 1) Conectarnos a la red wifi creada por el ESP8266
 Una Vez Encendido el ESP8266 aparecera una red WIFI llamada ESP
-%%%
-%%%
 
-!!!2) Abrir el navegador y teclear la siguiente direccion: __++http.//192.168.4.1++__
-%%%
-%%%
 
-!!!3) Pulsar en el enlace de encender/apagar led.
-el led deberia responder.%%%
-%%%
-%%%
 
-!!!!Explicacion:%%%
-%%%
+## 2) Abrir el navegador y teclear la siguiente direccion: **http.//192.168.4.1**
 
-!!!1) El programa crea una RED WIFI llamada ESP
+
+
+## 3) Pulsar en el enlace de encender/apagar led.
+el led deberia responder.
+
+
+# Explicacion:
+
+
+## 1) El programa crea una RED WIFI llamada ESP
 ///
   WiFi.mode(WIFI_AP);
   WiFi.softAP("ESP");
 ///
-%%%
 
-!!!2) Despues Arranca un servidor web con 3 paginas.
+
+## 2) Despues Arranca un servidor web con 3 paginas.
 ///
   servidor_web.on("/LedOn"  , D4a0         );//en la placa WEMOS d1 mini 
   servidor_web.on("/LedOff" , D4a1         );// el led se enciende al poner D4 a 0
   servidor_web.on("/"           , pag_principal);
   servidor_web.begin();
 ///
-%%%
 
 
-!!!3) Muestra via serie la Direccion (esto es informativo)
+
+## 3) Muestra via serie la Direccion (esto es informativo)
 ///
   Serial.println("\n\n Iniciando Red WIFI ESP... ");
   Serial.println(" http://192.168.4.1 ");
 ///
-%%%
 
-!!!4) El truco esta en la combinacion de las funciones y las paginas del servidor.
+
+## 4) El truco esta en la combinacion de las funciones y las paginas del servidor.
 ///
 servidor_web.on("/LedOn"  , D4a0 );
 ///
@@ -72,7 +72,7 @@ void D4a0() {
   servidor_web.send(200, "text/plain", "Ok D4=0");
 }
 ///
-%%%
+
 
 En esta funcion Enciendo el LED poniendo el pin D4 a 0.
 ///
@@ -84,46 +84,42 @@ Y muesto resultado.
   servidor_web.send(200, "text/plain", "Ok D4=0");
 ///
 
-%%%
-%%%
-%%%
 
 
-%%%
-!!!En la proxima revision añadire:
-* que se pueda conectar a un wifi
-* que se pueda leer una patilla analogica (A0)
+### En la proxima revision añadire:
+-  que se pueda conectar a un wifi
+-  que se pueda leer una patilla analogica (A0)
 Asi el programa deberia ser totalmente funcional.
 
 
-!!!!Continuando con HTTP_control|%%%
+# Continuando con HTTP_control|
 Esta vez añado Conexion a una red wifi existente y lectura del Pin A0.
 
-%%%
-!!!!Manejo:%%%
-%%%
 
-!!!1) Conectar el ESP al USB del PC y abrir terminal serie del arduino para ver la IP que obtiene al conctarse al WIFI%%%
-%%%
-!!!1b) O Con el movil y el programa libre [Port Autority|https://play.google.com/store/apps/details?id=com.aaronjwood.portauthority.free&hl=es] (por ejemplo) ver la IP que obtiene el ESP al conectarse al wifi. 
+## Manejo:
 
 
-!!!2) Con el ordenador o el movil conectado al mismo wifi %%%
+## 1) Conectar el ESP al USB del PC y abrir terminal serie del arduino para ver la IP que obtiene al conctarse al WIFI
+
+###1b) O Con el movil y el programa libre **Port Autority** (por ejemplo) ver la IP que obtiene el ESP al conectarse al wifi. 
+
+
+## 2) Con el ordenador o el movil conectado al mismo wifi 
 poner en el navegador la IP indcada en el terminal.
-%%%
-%%%
 
-!!!3) Esta vez si pulsamos en leer A0 %%%
+
+
+## 3) Esta vez si pulsamos en leer A0 
 al refrescar la pagina veremos com el valor cambia al tocar el pin A0 con el dedo.
 (al ser un entrada analogica es bastante sensible)
-%%%
-%%%
-%%%
 
-!!!!Explicacion:%%%
-%%%
 
-!!!1) El programa  se conecta a una red wifi llamada Mi_Red_WIFI (cambiar por el nombre de la red wifi a la que nos queremos conectar)
+
+
+# Explicacion:
+
+
+## 1) El programa  se conecta a una red wifi llamada Mi_Red_WIFI (cambiar por el nombre de la red wifi a la que nos queremos conectar)
 ///
   char* Red_WIFI          = "Mi_Red_WIFI";
   char* password_WIFI = "Mi_Contraseña_Wifi";
@@ -131,20 +127,17 @@ al refrescar la pagina veremos com el valor cambia al tocar el pin A0 con el ded
   WiFi.softAP("ESP");
   WiFi.begin(Red_WIFI, password_WIFI);
 ///
-he cambiado WIFI_AP por WIFI_AP_STA %%%
-(AP = punto de acceso) (STA de estacion)%%%
+he cambiado WIFI_AP por WIFI_AP_STA 
+(AP = punto de acceso) (STA de estacion)
 he añadido WiFi.begin(Red_WIFI, password_WIFI);
 Para que se conecte a la red WIFI
-%%%
-%%%
-!!!2) Pasados 5 segundos muestro la ip obtenida WiFi.localIP()
+
+
+## 2) Pasados 5 segundos muestro la ip obtenida WiFi.localIP()
 ///
   delay(5000);  //tiempo para que conecte al WIFI
   Serial.print(F("http://")); 
   Serial.println(WiFi.localIP().toString());
 ///
 
-%%%
-%%%
-%%%
 
