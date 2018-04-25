@@ -30,13 +30,13 @@ el led deberia responder.
 
 ## 1) El programa crea una RED WIFI llamada ESP
 
-///
+```c
 
 WiFi.mode(WIFI_AP);
 
 WiFi.softAP("ESP");
 
-///
+```
 
 ## 2) Despues Arranca un servidor web con 3 paginas.
 
