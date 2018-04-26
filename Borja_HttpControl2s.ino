@@ -8,7 +8,7 @@ char* password_WIFI = "lavidasabemejor";
 
 void setup(){
   Serial.begin(115200);
-  Serial.println(F("\n\nIniciando..."));
+  Serial.println("\n\n Iniciando...");
 
   WiFi.mode(WIFI_AP_STA);
   WiFi.softAP("ESP");
@@ -20,9 +20,9 @@ void setup(){
   servidor_web.on("/"       , pag_principal);
 
   servidor_web.begin();
-  Serial.println(F("http://192.168.4.1"));
+  Serial.println("http://192.168.4.1");
   delay(5000);  //tiempo para que conecte al WIFI
-  Serial.print(F("http://")); Serial.println(WiFi.localIP().toString());
+  Serial.print("http://"); Serial.println(WiFi.localIP().toString());
 }
 
 void loop(){
@@ -56,7 +56,3 @@ R"=====(
 void pag_principal() {
     servidor_web.send(200, "text/html", Texto_html_pagina_principal );
 }
-
-
-
-
