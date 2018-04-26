@@ -3,12 +3,12 @@
 #include <ESP8266WebServer.h>
 ESP8266WebServer servidor_web(80);
 
-char* Red_WIFI      = "ABAI_MIR_guest";
-char* password_WIFI = "lavidasabemejor";
+char* Red_WIFI      = "nombre red wifi";
+char* password_WIFI = "contraseña red wifi";
 
 void setup(){
   Serial.begin(115200);
-  Serial.println("\n\n Iniciando...");
+  Serial.println(F("\n\nIniciando..."));
 
   WiFi.mode(WIFI_AP_STA);
   WiFi.softAP("ESP");
@@ -20,9 +20,9 @@ void setup(){
   servidor_web.on("/"       , pag_principal);
 
   servidor_web.begin();
-  Serial.println("http://192.168.4.1");
+  Serial.println(F("http://192.168.4.1"));
   delay(5000);  //tiempo para que conecte al WIFI
-  Serial.print("http://"); Serial.println(WiFi.localIP().toString());
+  Serial.print(F("http://")); Serial.println(WiFi.localIP().toString());
 }
 
 void loop(){
@@ -56,3 +56,7 @@ R"=====(
 void pag_principal() {
     servidor_web.send(200, "text/html", Texto_html_pagina_principal );
 }
+
+
+
+
