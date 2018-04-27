@@ -14,10 +14,17 @@ Para luego integrarlo en algo MAS GRANDE
 ## 1) Conectarnos a la red wifi creada por el ESP8266
 Una Vez Encendido el ESP8266 aparecera una red WIFI llamada ESP
 
+![](images/HTTP_Control_1_1p.jpg)
 ## 2) Abrir el navegador y teclear la siguiente direccion: **http.//192.168.4.1**
+![](images/HTTP_Control_1_2p.jpg)
 
 ## 3) Pulsar en el enlace de encender/apagar led.
 el led deberia responder.
+
+![](images/HTTP_Control_1_4p.jpg)
+
+![](images/HTTP_Control_1_3p.jpg)
+
 
 # Explicacion:
 
@@ -81,14 +88,23 @@ Esta vez añado Conexion a una red wifi existente y lectura del Pin A0.
 ## Manejo:
 
 ## 1) Conectar el ESP al USB del PC y abrir terminal serie del arduino para ver la IP que obtiene al conctarse al WIFI
-###1b) O Con el movil y el programa libre **Port Autority** (por ejemplo) ver la IP que obtiene el ESP al conectarse al wifi. 
+
+![](images/HTTP_Control_2_1ap.jpg)
+
+### 1b) O Con el movil y el programa libre **Port Autority** (por ejemplo) ver la IP que obtiene el ESP al conectarse al wifi. 
+
+![](images/HTTP_Control_2_1bp.jpg)
 
 ## 2) Con el ordenador o el movil conectado al mismo wifi 
 poner en el navegador la IP indcada en el terminal.
 
+![](images/HTTP_Control_2_1.jpg)
+
 ## 3) Esta vez si pulsamos en leer A0 
 al refrescar la pagina veremos com el valor cambia al tocar el pin A0 con el dedo.
 (al ser un entrada analogica es bastante sensible)
+
+![](images/HTTP_Control_2_2.jpg)
 
 # Explicacion:
 
