@@ -65,10 +65,10 @@ que encendera el led.
 ( en la placa Wemos D1 el led se enciende al poner D4 a 0 )
 
 ```c
-.. void D4a0() {
-.. pinMode(D4, OUTPUT);
-.. digitalWrite(D4, 0);
-.. servidor_web.send(200, "text/plain", "Ok D4=0");
+void D4a0() {
+  pinMode(D4, OUTPUT);
+  digitalWrite(D4, 0);
+  servidor_web.send(200, "text/plain", "Ok D4=0");
 }
 ```
 
