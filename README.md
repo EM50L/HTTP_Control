@@ -75,7 +75,7 @@ servidor_web.send(200, "text/plain", "Ok D4=0");
 - que se pueda leer una patilla analogica (A0)
 Asi el programa deberia ser totalmente funcional.
 
-# Continuando con HTTP_control|
+# Continuando con HTTP_control
 Esta vez añado Conexion a una red wifi existente y lectura del Pin A0.
 
 ## Manejo:
@@ -108,6 +108,6 @@ Para que se conecte a la red WIFI
 ## 2) Pasados 5 segundos muestro la ip obtenida WiFi.localIP()
 ```c
 delay(5000); //tiempo para que conecte al WIFI
-Serial.print(F("http://")); 
+Serial.print("http://"); 
 Serial.println(WiFi.localIP().toString());
 ```
