@@ -33,8 +33,11 @@ WiFi.softAP("ESP");
 WiFi.begin(Red_WIFI, password_WIFI);
 ```
 he cambiado WIFI_AP por WIFI_AP_STA 
+
 (AP = punto de acceso) (STA de estacion)
+
 he añadido WiFi.begin(Red_WIFI, password_WIFI);
+
 Para que se conecte a la red WIFI
 
 ## 2) Pasados 5 segundos muestro la ip obtenida WiFi.localIP()
